@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Quantum Random Number Generator</title>
+    <!-- Modern Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;800&display=swap" rel="stylesheet">
+    <!-- Chart.js via CDN -->
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div class="background-effects">
+        <div class="blob blob-1"></div>
+        <div class="blob blob-2"></div>
+    </div>
+    
+    <div class="container">
+        <header>
+            <h1>Quantum <span class="highlight">Generator</span></h1>
+            <p>True randomness derived from quantum superposition</p>
+        </header>
+
+        <main>
+            <div class="card glass-panel control-panel">
+                <div class="input-group">
+                    <label for="bit-length">Select Number of Bits:</label>
+                    <div class="select-wrapper">
+                        <select id="bit-length">
+                            <option value="1">1 Bit</option>
+                            <option value="4">4 Bits</option>
+                            <option value="8" selected>8 Bits</option>
+                            <option value="16">16 Bits</option>
+                        </select>
+                    </div>
+                </div>
+
+                <button id="generate-btn" class="btn-primary">
+                    <span class="btn-text">Generate Numbers</span>
+                    <div class="loader hidden" id="btn-loader"></div>
+                </button>
+            </div>
+
+            <div class="results-grid">
+                <div class="card glass-panel result-card">
+                    <h2 class="card-title">Binary Output</h2>
+                    <div class="result-value" id="binary-output">...</div>
+                </div>
+                
+                <div class="card glass-panel result-card">
+                    <h2 class="card-title">Decimal Output</h2>
+                    <div class="result-value" id="decimal-output">...</div>
+                </div>
+            </div>
+
+            <div class="card glass-panel chart-panel">
+                <h2 class="card-title">Distribution (0s vs 1s)</h2>
+                <div class="chart-container">
+                    <canvas id="distribution-chart"></canvas>
+                </div>
+                <p class="chart-caption">As more numbers are generated, this should approach 50/50.</p>
+            </div>
+            
+            <div id="error-message" class="error-toast hidden"></div>
+        </main>
+
+        <footer>
+            <p>Powered by Python, Flask, and Qiskit</p>
+        </footer>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
